@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zeinab Mohamad One-Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfaf3;
+      color: #0d1b2a;
+    }
+
+    nav {
+      background-color: #0d1b2a;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #f4c430;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.2s ease-in-out;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    section {
+      padding: 50px 20px;
+    }
+
+    h1, h2 {
+      color: #0d1b2a;
+    }
+
+    .video iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 340px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 220px;
+      border-radius: 8px;
+      border: 4px solid #f4c430;
+    }
+
+    form input, form textarea {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      background-color: #f4c430;
+      color: #0d1b2a;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .home p {
+      max-width: 700px;
+    }
+
+    footer {
+      background-color: #0d1b2a;
+      color: #f4c430;
+      text-align: center;
+      padding: 20px;
+    }
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content {
+  max-width: 80%;
+  max-height: 80%;
+  margin: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lightbox-nav {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  font-size: 50px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#video">Video</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="#home">Home</a>
+  </nav>
+
+  <section id="video" class="video">
+    <h2>Watch This Welcome Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2a1PWf500D8?si=SutP9oQaqRBIUHZ9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </section>
+
+  <section id="gallery" class="gallery-section">
+    <h2>Photo Gallery</h2>
+<div class="gallery">
+  <img src="https://cdn.pixabay.com/photo/2014/07/10/17/18/battleship-389274_1280.jpg" alt="Gallery Image 1" class="lightbox-img">
+  <img src="https://cdn.pixabay.com/photo/2014/11/01/22/33/gold-513062_1280.jpg" alt="Gallery Image 2" class="lightbox-img">
+  <img src="https://cdn.pixabay.com/photo/2016/10/17/13/51/navy-blue-1747663_1280.jpg" alt="Gallery Image 3" class="lightbox-img">
+</div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <form>
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <section id="home" class="home">
+    <h1>Welcome to My Stylish Page</h1>
+    <p>This single-page site guides you in a unique way. Scroll through videos, browse my gallery, and reach out via the contact form — all without leaving the page.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Zeinab Mohamad. Designed with care.</p>
+  </footer>
+
+<div id="lightbox-modal" class="lightbox-modal">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" id="lightbox-image">
+  <div class="lightbox-nav">
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+  </div>
+</div>
+
+<script>
+  const images = document.querySelectorAll('.lightbox-img');
+  const modal = document.getElementById('lightbox-modal');
+  const modalImg = document.getElementById('lightbox-image');
+  const closeBtn = document.querySelector('.lightbox-close');
+  const nextBtn = document.querySelector('.lightbox-next');
+  const prevBtn = document.querySelector('.lightbox-prev');
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    modal.style.display = "flex";
+    modalImg.src = images[index].src;
+    currentIndex = index;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      showImage(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
+
+
+</body>
+</html>
